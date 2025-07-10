@@ -10,7 +10,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-connectDB();
+const connect = async () => {
+    await connectDB()
+}
+
+connect();
 
 app.use('/users', userRoutes);
 
