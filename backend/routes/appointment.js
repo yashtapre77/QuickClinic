@@ -1,9 +1,11 @@
 const express = require('express');
-const router = express.Router();
-const { createAppointment, getAppointments } = require('../controllers/appointmentController');
+const { bookAppointment, listAppointment,cancelAppointment } = require('../controllers/appointmentController');
 const auth = require('../middleware/authMiddleware');
 
-router.post('/', auth, createAppointment);
-router.get('/', auth, getAppointments);
+const router = express.Router();
+
+router.post('/', auth, bookAppointment);
+router.get('/', auth, listAppointment);
+router.delete('/', auth, cancelAppointment);
 
 module.exports = router;
