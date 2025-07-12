@@ -113,7 +113,7 @@ export default function DoctorDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{totalPatients.toLocaleString()}</div>
-              <p className="text-xs opacity-90 mt-1">+12% from last month</p>
+              <p className="text-xs opacity-90 mt-1">in last year</p>
             </CardContent>
           </Card>
 
@@ -141,12 +141,12 @@ export default function DoctorDashboard() {
 
           <Card className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium opacity-90">Success Rate</CardTitle>
+              <CardTitle className="text-sm font-medium opacity-90">Total Appointments</CardTitle>
               <UserCheck className="h-4 w-4 opacity-90" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">94.2%</div>
-              <p className="text-xs opacity-90 mt-1">Treatment success</p>
+              <div className="text-2xl font-bold">700</div>
+              <p className="text-xs opacity-90 mt-1">cancelled included</p>
             </CardContent>
           </Card>
         </div>

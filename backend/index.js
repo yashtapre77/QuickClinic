@@ -5,6 +5,7 @@ const connectDB = require('./config/database');  // your connection file
 const userRoutes = require('./routes/user');
 const doctorRoutes = require('./routes/doctor'); 
 const appointmentRoutes = require('./routes/appointment');
+const dashboardRoutes = require('./routes/dashboard');
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ connect();
 app.use('/users', userRoutes);
 app.use('/doctors', doctorRoutes);
 app.use('/appointments', appointmentRoutes);
+app.use('/dashboard', dashboardRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
