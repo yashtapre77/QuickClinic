@@ -1,13 +1,21 @@
 const Patient = require('../models/Patient');
+const doctorModel = require("../models/doctor")
 
 const createPatient = async (req, res) => {
   const patient = await Patient.create(req.body);
   res.status(201).json(patient);
 };
 
-const getAllPatients = async (req, res) => {
-  const patients = await Patient.find();
-  res.json(patients);
+const getAllDoctors = async (req, res) => {
+  try {
+    const doctors = await doctorModel.find();
+    res.json(doctors);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-module.exports = { createPatient, getAllPatients };
+
+
+
+module.exports = { createPatient, getAllDoctors };

@@ -1,5 +1,8 @@
+const Appointment = require("../models/Appointment")
 const doctorModel = require("../models/doctor")
 const validator = require("validator")
+const Patient = require('../models/Patient');
+
 
 const addDoctor = async (req, res) => {
 
@@ -40,5 +43,33 @@ const addDoctor = async (req, res) => {
 
 }
 
+const getAppointments = async (req, res) => {
+  try {
+    const doctorId = req.params.id
+    const appointments = await Appointment.find({docId:doctorId})
+    res.json({ success: true, appointments })
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({ success: false, message: error.message })
+  }
+}
 
-module.exports = { addDoctor }
+const completeAppointment = async (req, res) => {
+  try {
+    const { appointmentId } = req.body
+    const appointment = await Appointment.findById(appointmentId)
+    await Appointment.findByIdAndUpdate(appointmentId, { isCompleted: true })
+    res.json({ success: true, message: 'Appointment Completed' })
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({ success: false, message: error.message })
+  }
+}
+
+const getAllPatients = async (req, res) => {
+  const patients = await Patient.find();
+  res.json(patients);
+};
+
+
+module.exports = { addDoctor, getAppointments, completeAppointment, getAllPatients };
